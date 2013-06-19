@@ -1,0 +1,14 @@
+---
+layout: post
+title: "JSConf 2012"
+---
+
+## Simply Awesome
+
+Work has been manic since my return from the States and the incredible experience that was [JSConf 2012](http://2012.jsconf.us), and as such I haven't had much opportunity to sit down and write up a full post about my experiences at the event, about the talks and all the awesome people I met and the conversations I had with them. 
+
+<!-- more -->
+
+Since we're nearing the end of the week, the likelihood of said post getting written is rising significantly. That's the plan for this weekend. 
+
+Until then, a very sincere thanks must be given to Chris [(@voodootikigod)](http://twitter.com/voodootikigod) and Laura Williams [(@LWILLIAMS)](http://twitter.com/LWILLIAMS) for organising and putting on such an incredible event. This was my first JSConf and I couldn't have felt more welcomed into the family. Huge thanks to all the sponsors for not only the contents of the awesome swag bag, but also the food, events and free drinks that they provided. A special thanks goes to the guys and volunteers at NotConf [(@NotConf)](http://twitter.com/NotConf), the JSConf pre-conference, for all their hard work and sourcing of some of the finest local beers that took the edge off the harsh Arizonian sun. 
