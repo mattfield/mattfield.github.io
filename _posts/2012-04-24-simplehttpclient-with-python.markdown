@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "SimpleHTTPServer with Python"
+category: tutorials
+tags: [development, python, bash, tips]
 ---
 
 ## Forget MAMP
