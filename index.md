@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: Finite State Machines
 ---
 {% include JB/setup %}
 
