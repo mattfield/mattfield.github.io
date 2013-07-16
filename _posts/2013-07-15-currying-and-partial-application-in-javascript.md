@@ -170,7 +170,7 @@ addOne(2)
 {% endhighlight %}
 
 It's been noted that creating curried functions in this verbose manner is a bit of a pain, is tedious and hella ugly. [Curry](https://github.com/dominictarr/curry) is 
-a simple module that aims to make the process much easier. Check out [this post](http://hughfdjackson.com/javascript/2013/07/06/why-curry-helps/) by Hugh FD Jackson for the lowdown on 
+a simple module that aims to make the process much easier (and way less ugly). Check out [this post](http://hughfdjackson.com/javascript/2013/07/06/why-curry-helps/) by Hugh FD Jackson for the lowdown on 
 how and why you'd want to use it.
 
 ................................
