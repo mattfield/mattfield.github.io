@@ -140,7 +140,7 @@ add(1);
    }
 {% endhighlight %}
 
-A curried function, when called with less than the total number of required arguments, will simply return the next curried function 
+A curried function, when called with less than the total number of required arguments, will simply return the next curried function.
 
 ## Linking it all together
 
@@ -185,7 +185,7 @@ being largely the same as the original.
 * Partial application produces functions that are different 
 to their original - they need less arguments to invoke.
 
-Following these two points should hopefully help keep the two concepts separate.
+................................
 
 ## Now What?
 
