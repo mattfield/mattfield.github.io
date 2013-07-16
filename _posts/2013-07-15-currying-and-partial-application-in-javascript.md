@@ -6,8 +6,7 @@ tags: [functional programming, javascript, introduction, tuts]
 ---
 
 Currying and partial application are two awesome techniques you may not have heard of.  
-This post aims to give a fairly high-level overview of both concepts in JavaScript. We assume the reader 
-has a basic understanding of the nature of functions in JavaScript.
+This post aims to give a fairly high-level overview of both concepts in JavaScript. 
 
 ## Partial Application
 
@@ -188,14 +187,9 @@ Following these two points should hopefully help keep the two concepts separate.
 
 ## Now What?
 
-Hopefully this whistle-stop tour has imparted some insight into the applicability of currying 
-and partial application in your everyday JavaScript programming. There are a whole host of 
-libraries out there that will be of use to you when using partial application and currying in 
-your JavaScript code, such as:
-
-- [curry](https://github.com/dominictarr/curry)
-- Lo-dash's [partial](http://lodash.com/docs#partial), [partialRight](http://lodash.com/docs#partialRight) and [bind](http://lodash.com/docs#bind) methods
-- and a whole host of functional programming goodies in the [underscore-contrib repo](https://github.com/documentcloud/underscore-contrib)
+Hopefully this whistle-stop tour has provided some insight into the applicability of currying 
+and partial application. The real advantage of using currying and partial application is that 
+they give you the ability to create small, reuseable chunks of code without excess cruft.
 
 ................................
 
