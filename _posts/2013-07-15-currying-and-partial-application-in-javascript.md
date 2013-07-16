@@ -139,19 +139,12 @@ add(1);
    }
 {% endhighlight %}
 
-This is where a knowledge of functions as first-class citizens in JavaScript comes into place. 
-
-In JavaScript, functions can return other functions. So, our curried function here, when called with one argument, simply returns the contents of its body, namely the anonymous function, and 
-stores a reference to the argument in its referencing environment (which the anonymous function can access).
-This is why the curried function is invoked as a chain of calls. The first call provides an argument to the first function, 
-the second call provides an argument to the second function and so on. Each successive function in the chain has access to all the variables passed to prior function 
-calls due to the closure created by the outer-most `add` function. Curried functions will return curried functions if there are still arguments 
-remaining that need to be provided for all functions in the chain to be evaluated.
+A curried function, when called with less than the total number of required arguments, will simply return the next curried function 
 
 ## Linking it all together
 
 What this means is that we can create a curried function, pass in fewer-than-required arguments, store a reference to the 
-returned function, and pass it around in our application:
+returned function, and pass it around:
 
 {% highlight javascript %}
 // Our `add` function from earlier
