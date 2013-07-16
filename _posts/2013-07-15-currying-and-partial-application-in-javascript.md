@@ -1,28 +1,21 @@
 ---
 layout: post
 title: "Currying and Partial Application in JavaScript"
-category: tutorials
-tags: [functional programming, javascript, introduction]
+category: javascript
+tags: [functional programming, javascript, introduction, tuts]
 ---
 
-The concepts of currying and partial application are two programming concepts
-that the JavaScript programmer may not be instantly familiar with. This 
-would not be surprising given their origins in functional programming and given also
-that many articles and posts on JavaScript focus 
-primarily on the object-oriented aspects of programming in the language. Arguably, this focus has been to the detriment of 
-other programming paradigms and their applicability and usefulness in JavaScript programming. Currying and partial 
-application are two such useful concepts.
-
-This post aims to give a fairly high-level overview of currying and partial application in JavaScript. We assume the reader 
+Currying and partial application are two awesome techniques you may not have heard of.  
+This post aims to give a fairly high-level overview of both concepts in JavaScript. We assume the reader 
 has a basic understanding of the nature of functions in JavaScript.
 
 ## Partial Application
 
-Partial application can be defined as the process of binding a fixed number of arguments to a function, 
+Partial application is the process of binding a fixed number of arguments to a function, 
 producing another function of smaller arity. This new function can then be called with a reduced number of
-arguments than the initial function.
+arguments.
 
-Suppose we have a function `add` that takes two arguments and returns their sum:
+To illustrate, suppose we have a function `add` that takes two arguments and returns their sum:
 
 {% highlight javascript %}
 function add(a, b){
@@ -38,7 +31,7 @@ add(1, 2);
 {% endhighlight %}
 
 Now, also suppose you have a situation where you need to call our `add` function repeatedly, but provide 
-the same first argument _every single time_. You could just go ahead and do this:
+the same first argument _every single time_. You could just dive in and do this:
 
 {% highlight javascript %}
 add(1, 2) // 3
@@ -47,7 +40,7 @@ add(1, 258) // 259
 add(1, 1493022) // 1493023
 {% endhighlight %}
 
-However, this is a pretty hefty violation of the [DRY](http://en.wikipedia.org/wiki/Don't_repeat_yourself) principle. 
+But you really shouldn't. Ouch. This has the potential to become unwieldy very quickly.
 
 Instead, what we can do is partially apply a fixed argument to our `add` function, creating a new function with the first argument 
 (in this case `1`) bound to it. This new function could then be called repeatedly by supplying only the second argument:
@@ -70,18 +63,18 @@ function addOne(b){
 }
 {% endhighlight %}
 
-The good news is that in ES5 we already have a method available to us that performs partial application 
-for us without the need to define our own: `Function.prototype.bind`. [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) 
+The good news is that in ES5 we already have a method available to us that performs partial application `Function.prototype.bind`. 
+[Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) 
 takes a context as it's first argument, followed by an arbitrary list of arguments:
 
 {% highlight javascript %}
 myFunc.bind(thisArg, arg1, arg2, ...)
 {% endhighlight %}
 
-`Function#bind` does exactly what we want it to; it creates a new function with a given context and a 
-sequence of arguments that will precede any other arguments provided when the new function is called. Perfect!
+It does exactly what we want it to: creates a new function with a sequence of arguments that will precede any other 
+arguments provided when the new function is called. Perfect!
 
-So, we can use it to achieve the same result as above:
+We can use it to achieve the same result as above:
 
 {% highlight javascript %}
 var addOne = add.bind(this, 1);
@@ -102,13 +95,13 @@ var addOneAndTwoAndThree = add.bind(this, 1, 2, 3);
 addOneAndTwoAndThree(4); // 10
 {% endhighlight %}
 
-If you enter our partially applied `addOne` function into Chrome Dev Tools, you'll get the following returned:
+if you throw our partially applied `addone` function into chrome dev tools, you'll get the following returned:
 
 {% highlight javascript %}
 function () { [native code] }
 {% endhighlight %}
 
-This is a representation of the new partially applied function that `Function#bind` creates. 
+this is a representation of the new partially applied function that `function#bind` creates. 
 
 ## Currying
 
@@ -197,19 +190,22 @@ addOne();
 // We can now call `addOne` with an argument to give us the same expected result
 addOne(2)
 -> 3
-{% endhighlight %}  
+{% endhighlight %}
+
+It's been noted that creating curried functions in this verbose manner is a bit of a pain (not to mention hella ugly). [Curry](https://github.com/dominictarr/curry) is 
+a simple curry module that aims to make the process must easier. Check out [this post](http://hughfdjackson.com/javascript/2013/07/06/why-curry-helps/) by Hugh FD Jackson for the lowdown on 
+how and why you'd want to use it.
 
 ................................
 
 ## Currying != Partial Application
 
-The terms currying and partial application are sometimes used interchangeably, even though they work differently. It's quite easy to 
-see how misconceptions arise given that, at first blush, one could mistake the process in the previous example for partial application. 
-The key difference between the two transformations is in what they produce. 
+Let's wrap-up by clearing up a common misconception: currying and partial application are not the same thing. The key difference between the two 
+transformations is in what they produce:
 
 * Currying _always_ produces nested unary functions, with the transformed function still 
 being largely the same as the original. 
-* The functions produces by partial application, however, are different 
+* Partial application produces functions that are different 
 to their original - they need less arguments to invoke.
 
 Following these two points should hopefully help keep the two concepts separate.
