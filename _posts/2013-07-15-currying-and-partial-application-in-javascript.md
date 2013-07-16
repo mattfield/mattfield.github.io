@@ -95,14 +95,6 @@ var addOneAndTwoAndThree = add.bind(this, 1, 2, 3);
 addOneAndTwoAndThree(4); // 10
 {% endhighlight %}
 
-if you throw our partially applied `addone` function into chrome dev tools, you'll get the following returned:
-
-{% highlight javascript %}
-function () { [native code] }
-{% endhighlight %}
-
-this is a representation of the new partially applied function that `function#bind` creates. 
-
 ## Currying
 
 Currying is a transformative technique that, when applied to a function with multiple arguments, returns 
