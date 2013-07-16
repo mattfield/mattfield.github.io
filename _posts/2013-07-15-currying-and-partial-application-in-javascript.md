@@ -85,6 +85,8 @@ var addOneAndTwoAndThree = add.bind(this, 1, 2, 3);
 addOneAndTwoAndThree(4); // 10
 {% endhighlight %}
 
+................................
+
 ## Currying
 
 Currying is the process of transforming a function with multiple arguments into 
