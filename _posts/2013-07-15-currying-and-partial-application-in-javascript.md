@@ -12,7 +12,7 @@ has a basic understanding of the nature of functions in JavaScript.
 ## Partial Application
 
 Partial application is the process of binding a fixed number of arguments to a function, 
-producing another function of smaller arity. This new function can then be called with a reduced number of
+producing another function of smaller arity that can be called with a reduced number of
 arguments.
 
 To illustrate, suppose we have a function `add` that takes two arguments and returns their sum:
@@ -21,11 +21,7 @@ To illustrate, suppose we have a function `add` that takes two arguments and ret
 function add(a, b){
   return a + b;
 }
-{% endhighlight %}
 
-Which we can of course call by providing both arguments:
-
-{% highlight javascript %}
 add(1, 2);
 -> 3
 {% endhighlight %}
@@ -42,8 +38,8 @@ add(1, 1493022) // 1493023
 
 But you really shouldn't. Ouch. This has the potential to become unwieldy very quickly.
 
-Instead, what we can do is partially apply a fixed argument to our `add` function, creating a new function with the first argument 
-(in this case `1`) bound to it. This new function could then be called repeatedly by supplying only the second argument:
+Instead, what we can do is partially apply a fixed argument to our `add` function. This gives us a new function with the first argument 
+(in this case `1`) bound to it, which can then be called repeatedly by supplying only the second argument:
 
 {% highlight javascript %}
 // Assuming we have a method called `partial` that performs the application
@@ -53,9 +49,7 @@ addOne(2) // 3
 addOne(258) // 259
 {% endhighlight %}
 
-Much better! Essentially, the transformation that our `partial` method is performing here returns a new 
-function that has every instance of the first argument in the function body replaced with the argument 
-we provide to `partial`. In this instance, what `partial` creates is basically:
+Much better! In this instance, what `partial` creates is essentially:
 
 {% highlight javascript %}
 function addOne(b){
@@ -74,8 +68,6 @@ myFunc.bind(thisArg, arg1, arg2, ...)
 It does exactly what we want it to: creates a new function with a sequence of arguments that will precede any other 
 arguments provided when the new function is called. Perfect!
 
-We can use it to achieve the same result as above:
-
 {% highlight javascript %}
 var addOne = add.bind(this, 1);
 
@@ -83,8 +75,7 @@ addOne(2) // 3
 addOne(258) // 259
 {% endhighlight %}
 
-We can even use it with functions of higher arity too, since it accepts an arbitary number 
-of arguments:
+We can even use it with functions of higher arity too, since it accepts an arbitary number of arguments:
 
 {% highlight javascript %}
 function add(a, b, c, d){
@@ -97,10 +88,10 @@ addOneAndTwoAndThree(4); // 10
 
 ## Currying
 
-Currying is a transformative technique that, when applied to a function with multiple arguments, returns 
+Currying is the process of transforming a function with multiple arguments into 
 a new function composed of nested unary functions that can then be called as a chain:
 
-Let's take our original, uncurried `add` function:
+Using our uncurried `add` function from earlier:
 
 {% highlight javascript %}
 function add(a, b){
