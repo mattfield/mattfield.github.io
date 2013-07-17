@@ -142,7 +142,7 @@ Swish.
 
 ## Linking it all together
 
-So how is any of this _actually_ useful? What we can do is create a curried function, pass in fewer-than-required arguments, 
+So how is any of this _actually_ useful? What we could do is create a curried function, pass in fewer-than-required arguments, 
 store a reference to the returned function, and pass it around:
 
 {% highlight javascript %}
@@ -168,7 +168,7 @@ addOne(2)
 {% endhighlight %}
 
 But storing references to functions and passing them around is hardly revolutionary. 
-For me the real advantage of using currying and partial application is that they give you the ability to create small, reuseable chunks of code easily.
+The real advantage of these techniques is that they give you the ability to create small, reuseable chunks of code easily.
 
 Let's make a little wrapper around the modulo operator and a utility function that checks whether a number is odd:
 
@@ -190,7 +190,7 @@ isOdd(5);
 -> 1
 {% endhighlight %}
 
-Cool. So, this is pretty useful in it's own right, but let's take things further:
+Cool. So, this is pretty useful in it's own right, but let's take things a bit further:
 
 {% highlight javascript %}
 // Another wrapper, this time around the native `filter` method
