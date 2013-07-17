@@ -144,7 +144,7 @@ Swish.
 ## Linking it all together
 
 So how is any of this _actually_ useful? The real advantage of these techniques is that they give you the ability to create 
-small, reuseable chunks of code easily.
+small, reuseable chunks of code that can then be used as building blocks.
 
 Let's make a little wrapper around the modulo operator and a utility function that checks whether a number is odd:
 
