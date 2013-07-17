@@ -187,8 +187,12 @@ getTheOdds([1,2,3,4,5]);
 {% endhighlight %}
 
 Now this is why these two techniques are awesome. We've created a pretty useful utility function that will 
-return all the odd numbers in an array built by using a bunch of small functions as building blocks. We can 
-then take those building blocks and re-use and add to them to create our own small library of functional Lego!
+return all the odd numbers in an array built by using a bunch of small functions as building blocks.
+
+The added benefit of using these techniques is that they encourage you to slow down; think carefully 
+about what you're trying to achieve and break the process down into programmatic steps. Then you can create 
+discrete blocks of functionality for each of those steps before combining them together. You may even find 
+a simpler way of solving old problems, too.
 
 ## References and Partial Sources
 
