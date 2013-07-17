@@ -188,21 +188,7 @@ getTheOdds([1,2,3,4,5]);
 
 Now this is why these two techniques are awesome. We've created a pretty useful utility function that will 
 return all the odd numbers in an array built by using a bunch of small functions as building blocks. We can 
-then take those building blocks and re-use and add to them to create our own small library of functional Lego.
-
-................................
-
-## Currying != Partial Application
-
-Let's wrap-up by clearing up a common misconception: currying and partial application are not the same thing. The key difference between the two 
-transformations is in what they produce:
-
-* Currying _always_ produces nested unary functions, with the transformed function still 
-being largely the same as the original. 
-* Partial application produces functions that are different 
-to their original - they need less arguments to invoke.
-
-................................
+then take those building blocks and re-use and add to them to create our own small library of functional Lego!
 
 ## References and Partial Sources
 
