@@ -6,7 +6,8 @@ tags: [functional programming, javascript, introduction, tuts]
 ---
 
 Currying and partial application are two awesome techniques you may not have heard of.  
-This post aims to give a fairly high-level overview of both concepts in JavaScript. 
+This post aims to give a fairly high-level overview of both concepts in JavaScript and 
+why you should definitely be using them.
 
 ## Partial Application
 
