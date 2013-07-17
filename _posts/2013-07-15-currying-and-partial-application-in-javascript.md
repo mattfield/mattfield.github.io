@@ -121,6 +121,14 @@ We can then invoke our curried function using a chain of function calls:
 add(1)(2); // 3
 {% endhighlight %}
 
+If you miss out any arguments, a new function that expects some or all of the remaining arguments will be created:
+
+{% highlight javascript %}
+var addOne = add(1);
+addOne(2);
+-> 3
+{% endhighlight %}
+
 But, let's be honest, no-one would sit and write all this cruft out in any language with higher-order functions and closures. Plus invoking a curried function
 with a chain of calls is kinda ugly to look at. To simplify things, we're going to use [curry](https://github.com/dominictarr/curry), 
 a simple module that aims to make creating and using curried functions way easier, allowing us to do something like this:
