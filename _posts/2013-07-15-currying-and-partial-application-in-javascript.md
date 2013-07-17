@@ -187,7 +187,7 @@ getTheOdds([1,2,3,4,5]);
 {% endhighlight %}
 
 Now this is why these two techniques are awesome. We've created a pretty useful utility function that will 
-return all the odd numbers in an array, but we've build it using a bunch of small, reusable functions as building blocks.
+return all the odd numbers in an array, but we've built it using a bunch of small, reusable functions as building blocks.
 
 ................................
 
