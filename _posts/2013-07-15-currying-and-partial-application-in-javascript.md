@@ -205,8 +205,6 @@ to their original - they need less arguments to invoke.
 
 ## References and Partial Sources
 
-I can't claim all of this post as my own work. Here are some influential external sources:
-
 * Ben Alman's [Partial Application in JavaScript](http://benalman.com/news/2012/09/partial-application-in-javascript/)
 * Dr. Axel Rauschmayer's [Currying versus partial application](http://www.2ality.com/2011/09/currying-vs-part-eval.html)
 * Wikipedia pages on [currying](http://en.wikipedia.org/wiki/Currying) and [partial application](http://en.wikipedia.org/wiki/Partial_application)
