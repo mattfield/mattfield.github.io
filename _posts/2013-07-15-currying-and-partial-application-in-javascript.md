@@ -142,33 +142,8 @@ Swish.
 
 ## Linking it all together
 
-So how is any of this _actually_ useful? What we could do is create a curried function, pass in fewer-than-required arguments, 
-store a reference to the returned function, and pass it around:
-
-{% highlight javascript %}
-// Our `add` function from earlier
-function add(a){
-  return function(b){
-    return a + b;
-  }
-}
-
-var addOne = add(1);
-
-// Remember, calling a curried function with less-than-required arguments 
-// return the next function in the chain
-addOne();
--> function(b){
-     return a + b;
-   }
-
-// We can now call `addOne` with an argument to give us the same expected result
-addOne(2)
--> 3
-{% endhighlight %}
-
-But storing references to functions and passing them around is hardly revolutionary. 
-The real advantage of these techniques is that they give you the ability to create small, reuseable chunks of code easily.
+So how is any of this _actually_ useful? The real advantage of these techniques is that they give you the ability to create 
+small, reuseable chunks of code easily.
 
 Let's make a little wrapper around the modulo operator and a utility function that checks whether a number is odd:
 
@@ -210,8 +185,8 @@ getTheOdds([1,2,3,4,5]);
 -> [1,3,5]
 {% endhighlight %}
 
-Now this is why these two techniques are pretty rad. We've created a bunch of small, reusable functions that we can pass around, 
-supply as arguments to other functions and partially apply to construct new functions. 
+Now this is why these two techniques are awesome. We've created a pretty useful utility function that will 
+return all the odd numbers in an array, but we've build it using a bunch of small, reusable functions as building blocks.
 
 ................................
 
@@ -229,7 +204,7 @@ to their original - they need less arguments to invoke.
 
 ## References and Partial Sources
 
-I can't claim all of this post as my own work, so here are some influential external sources:
+I can't claim all of this post as my own work. Here are some influential external sources:
 
 * Ben Alman's [Partial Application in JavaScript](http://benalman.com/news/2012/09/partial-application-in-javascript/)
 * Dr. Axel Rauschmayer's [Currying versus partial application](http://www.2ality.com/2011/09/currying-vs-part-eval.html)
