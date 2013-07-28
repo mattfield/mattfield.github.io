@@ -232,3 +232,4 @@ NB This post and entire blog is [open-sourced on GitHub](https://github.com/matt
 ## References
 * [Functors, Applicatives and Monads in Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
 * ["Hey Underscore, You're Doing It Wrong!"](https://www.youtube.com/watch?v=m3svKOdZijA) - a talk by Brian Lonsdorf at [HTML5DevConf 2013](http://html5devconf.com/)
+* ["Learn You a Haskell for Great Good!"](http://learnyouahaskell.com)
