@@ -63,19 +63,20 @@ _.map([5, 6, 7], addOne);
 
 `_.map` is taking the value *out of its context* to act on it, then boxing it back up into it's original context for us afterwards.
 
-So `_.map` knows how to apply functions to values that are wrapped in an array. The question is: is
-it more abstract than this? Can we apply it to other data types rather than just arrays? 
+So `_.map` knows how to apply functions to values that are wrapped in an array (and objects too, incidentally). The question is: is
+it more abstract than this? Can we apply the same method of iteration it to other data types rather than just arrays? 
 
 We certainly can; but there's just one caveat.
 
 Underscore/Lodash's `map` function becomes next-to-useless when implementing our own interface. 
-We need more flexibility, allowing us to define our own `map` functions for each new object we create.
+We need more flexibility. We need to be able define our own `map` functions for each new object we create, 
+and for each implementation to differ depending on what we want our object to do.
 From now on, we're going to be using [typeclasses](https://github.com/loop-recur/typeclasses), 
-a small library that will make our lives much easier in this task.
+a small collection of helpful abstractions that will make our lives much easier in this task.
 
 ## Functors
 
-Ok, time to get serious. Deep breath and hold on to your butts.
+Ok, time to get serious. Hold on to your butts.
 
 Let's start vanilla by creating our own constructor object, giving us a new container for our values:
 
@@ -85,7 +86,7 @@ var MyObj = function(val){
 };
 {% endhighlight %}
 
-This is actually a good representation of how we treat types a little differently 
+This is actually a good representation of how we treat types differently to objects
 in functional programming. We're using objects as contexts or containers for values.
 
 What we want to be able to do is map over this object and have a function run on it's contents. What 
@@ -100,7 +101,7 @@ map(addOne, MyObj(5));
 MyObj(addOne(5));
 {% endhighlight %}
 
-What we need to do is define our own `fmap` on `MyObj`. We need: a **Functor**. Don't worry if you're not 100% certain what's 
+What we need to do is define our own `fmap` on `MyObj`. We need a **Functor**. Don't worry if you're not 100% certain what's 
 going on here, we'll get right to it in a minute:
 
 {% highlight javascript %}
@@ -115,7 +116,7 @@ fmap(addOne, MyObj(5));
 {% endhighlight %}
 
 What we've just done is define a **Functor**. A Functor is a [typeclass](http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101), a sort 
-of interface that defines a behaviour. If we want to get all Haskell up in here, this is the definition:
+of interface that defines a behaviour. If we want to get all Haskell up in here, this is the typeclass definition:
 
 {% highlight haskell %}
 class Functor f where
