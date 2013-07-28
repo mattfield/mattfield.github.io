@@ -226,6 +226,8 @@ graduates, ivory-tower academics and Haskell. They are extremely useful construc
 in a functional way much easier. Hopefully this post has given you some insight into how to take your 
 JavaScript to the next level: use you a Functor!
 
+NB This post and entire blog is [open-sourced on GitHub](https://github.com/mattfield/mattfield.github.io/)
+
 ## References
 * [Functors, Applicatives and Monads in Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
 * ["Hey Underscore, You're Doing It Wrong!"](https://www.youtube.com/watch?v=m3svKOdZijA) - a talk by Brian Lonsdorf at [HTML5DevConf 2013](http://html5devconf.com/)
