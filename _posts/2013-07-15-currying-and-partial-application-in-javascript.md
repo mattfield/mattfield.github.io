@@ -22,7 +22,7 @@ function add(a, b){
 }
 
 add(1, 2);
--> 3
+//=> 3
 {% endhighlight %}
 
 Let's say you need to call our `add` function repeatedly, but provide 
@@ -30,13 +30,13 @@ the same first argument _every single time_. You could just dive in and do this:
 
 {% highlight javascript %}
 add(1, 2);
--> 3
+//=> 3
 add(1, 10);
--> 11
+//=> 11
 add(1, 258);
--> 259
+//=> 259
 add(1, 1493022);
--> 1493023
+//=> 1493023
 {% endhighlight %}
 
 But you really shouldn't. Ouch. This has the potential to become unwieldy very quickly.
@@ -50,9 +50,9 @@ Here we're using Lo-Dash's `_.partial` method to perform the partial application
 var addOne = _.partial(add, 1);
 
 addOne(2);
--> 3
+//=> 3
 addOne(258);
--> 259
+//=> 259
 {% endhighlight %}
 
 Much better! What we've created using `_.partial` is essentially:
@@ -76,8 +76,10 @@ arguments provided when the new function is called. Perfect!
 {% highlight javascript %}
 var addOne = add.bind(this, 1);
 
-addOne(2) // 3
-addOne(258) // 259
+addOne(2)
+//=> 3
+addOne(258)
+//=> 259
 {% endhighlight %}
 
 We can use it with functions that take more arguments too, since `Function.prototype.bind` accepts an arbitary number of arguments:
@@ -88,7 +90,8 @@ function add(a, b, c, d){
 }
 
 var addOneAndTwoAndThree = add.bind(this, 1, 2, 3);
-addOneAndTwoAndThree(4); // 10
+addOneAndTwoAndThree(4);
+//=> 10
 {% endhighlight %}
 
 ................................
@@ -105,7 +108,11 @@ function add(a, b){
 };
 {% endhighlight %}
 
-The curried version of `add` would look like this:
+In a nutshell, _currying_ is the process of taking a function with multiple arguments and creating another function that:
+1) Takes only a single argument, and
+1) Returns another curried function if there are any remaining arguments 
+
+So, using these two rules, the curried version of `add` would look like this:
 
 {% highlight javascript %}
 function add(a){
@@ -115,21 +122,45 @@ function add(a){
 }
 {% endhighlight %}
 
-We can then invoke our curried function using a chain of function calls:
+Let’s break that down:
 
 {% highlight javascript %}
-add(1)(2); // 3
+// The outer function `add` takes one argument: `a`
+function add(a){
+  // which returns an anonymous function that takes
+  // a second argument: `b`
+  return function(b){
+    // This anonymous function then returns the sum 
+    // of both arguments
+    return a + b;
+  }
+}
 {% endhighlight %}
 
-If you miss out any arguments, a new function that expects some or all of the remaining arguments will be created:
+What this means is that we can invoke our curried function using a chain of function calls...
 
 {% highlight javascript %}
+add(1)(2);
+//=> 3
+{% endhighlight %}
+
+...or, if we supply less than the total number of required arguments, a function is returned that expects some or all of the remaining arguments:
+
+{% highlight javascript %}
+// Supplying the first argument to `add`
 var addOne = add(1);
+
+// returns an anonymous curried function assigned to `addOne`
+//=> addOne = function(b){ return a + b }
+
+// …that’s waiting for a second argument
 addOne(2);
--> 3
+//=> 3
 {% endhighlight %}
 
-But, let's be honest, no-one would sit and write all this cruft out in any language with higher-order functions and closures. Plus invoking a curried function
+This is a **very** contrived example, but what we’ve just done here should look familiar to you now. It’s partial application, but there’s a slight distinction to be made. We haven’t used any methods to perform the partial application for us here; the structure of the curried function is enough to accomplish it. Currying sets us up perfectly to create functions that can be very easily partially-applied. We’ll go into further detail about how to use currying in just a minute.
+
+Before we do however, let's be honest, no-one would sit and write all this cruft out in any language with higher-order functions and closures. Plus invoking a curried function
 with a chain of calls is kinda ugly to look at. To simplify things, we're going to use [curry](https://github.com/dominictarr/curry), 
 a simple module that aims to make creating and using curried functions way easier, allowing us to do something like this:
 
@@ -140,11 +171,11 @@ var addThree = curry(function(a, b, c){
 });
 
 addThree(1)(2)(3);
--> 6
+//=> 6
 
 // Or, scrapping the ugly
 addThree(1, 2, 3);
--> 6
+//=> 6
 {% endhighlight %}
 
 Swish.
@@ -154,6 +185,8 @@ Swish.
 So how is any of this _actually_ useful? The real advantage of these techniques is that they give you the ability to create 
 small, reuseable chunks of code that can then be used as building blocks.
 
+Time for a less-contrived example.
+
 Let's make a little wrapper around the modulo operator and a utility function that checks whether a number is odd:
 
 {% highlight javascript %}
@@ -162,16 +195,16 @@ var modulo = curry(function(divisor, dividend){
 });
 
 modulo(3, 9);
--> 0
+//=> 0
 
 // Partially applying `modulo` with the number 2 to give us our utility function
 var isOdd = modulo(2);
 
 // Which returns a truthy or falsey value
 isOdd(6);
--> 0
+//=> 0
 isOdd(5);
--> 1
+//=> 1
 {% endhighlight %}
 
 Cool. So, this is pretty useful in it's own right, but let's take things a bit further:
@@ -183,7 +216,7 @@ var filter = curry(function(f, xs){
 });
 
 filter(isOdd, [1,2,3,4,5]);
--> [1,3,5]
+//=> [1,3,5]
 
 // Partially applying `filter` with `isOdd`
 var getTheOdds = filter(isOdd);
@@ -191,16 +224,18 @@ var getTheOdds = filter(isOdd);
 // And we end up with a useful little function that will 
 // return all the odd numbers in an array
 getTheOdds([1,2,3,4,5]);
--> [1,3,5]
+//=> [1,3,5]
 {% endhighlight %}
 
-Now this is why these two techniques are awesome. We've created a pretty useful utility function that will 
+Now this is why these two techniques are **awesome**. We've created a pretty useful utility function that will 
 return all the odd numbers in an array built by using a bunch of small functions as building blocks.
+
+This method of function scaffolding is one of the fundamental techniques in functional programming.
 
 The added benefit of using these techniques is that they encourage you to slow down; think carefully 
 about what you're trying to achieve and break the process down into programmatic steps. Then you can create 
 discrete blocks of functionality for each of those steps before combining them together. You may even find 
-a simpler way of solving old problems, too.
+a simpler way of solving old problems in the process.
 
 ## References and Partial Sources
 
