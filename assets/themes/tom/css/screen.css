@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Buenard:400,700|Inconsolata:400,700);
+
 /*****************************************************************************/
 /*
 /* Common
@@ -17,8 +19,7 @@ html, body {
 
 body {
   background-color: white;
-  font: 13.34px helvetica, arial, clean, sans-serif;
-  *font-size: small;
+  font: 16px 'Buenard', helvetica, arial, clean, sans-serif;
   text-align: center;
 }
 
@@ -27,19 +28,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  font-size: 1.5em;
+  font-weight: 400;
   margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 1.15em;
 }
 
 p {
   margin: 1em 0;
+  line-height: 1.57;
 }
 
 a {
-  color: #00a;
+  color: #2980b9;
 }
 
 a:hover {
-  color: black;
+  color: #2c3e50;
 }
 
 a:visited {
@@ -49,6 +57,12 @@ a:visited {
 table {
   font-size: inherit;
   font: 100%;
+}
+
+pre, code, .code {
+  font-family: "Inconsolata";
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /*****************************************************************************/
@@ -68,8 +82,9 @@ ul.posts {
 
   ul.posts span {
     color: #aaa;
-    font-family: Monaco, "Courier New", monospace;
-    font-size: 80%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
   }
 
 /*****************************************************************************/
@@ -79,26 +94,26 @@ ul.posts {
 /*****************************************************************************/
 
 .site {
-  font-size: 110%;
   text-align: justify;
-  width: 40em;
+  width: 35em;
   margin: 3em auto 2em auto;
   line-height: 1.5em;
 }
 
 .title {
-  color: #a00;
-  font-weight: bold;
+  color: #2980b9;
+  font-size: 15px;
+  font-family: "Inconsolata", monospace, sans-serif;
   margin-bottom: 2em;
 }
 
   .site .title a {
-    color: #a00;
+    color: #2980b9;
     text-decoration: none;
   }
 
   .site .title a:hover {
-    color: black;
+    color: #2c3e50;
   }
 
   .site .title a.extra {
@@ -108,10 +123,13 @@ ul.posts {
   }
 
   .site .title a.extra:hover {
-    color: black;
+    color: #2c3e50;
   }
 
   .site .meta {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
     color: #aaa;
   }
 
@@ -129,7 +147,7 @@ ul.posts {
     }
 
       .site .footer .contact a {
-        color: #8085C1;
+        color: #2980b9;
       }
 
     .site .footer .rss {
@@ -155,9 +173,10 @@ ul.posts {
   /* standard */
 
   #post pre {
-    border: 1px solid #ddd;
-    background-color: #eef;
-    padding: 0 .4em;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    padding: 1em 0.6em; 
   }
 
   #post ul,
@@ -167,8 +186,6 @@ ul.posts {
 
   #post code {
     border: 1px solid #ddd;
-    background-color: #eef;
-    font-size: 85%;
     padding: 0 .2em;
   }
 
@@ -186,6 +203,10 @@ ul.posts {
 
   #post pre.terminal code {
     background-color: #333;
+  }
+
+  .highlight {
+    background: #fff;
   }
 
 #related {
