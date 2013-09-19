@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Finite State Machines
+title: compose
 ---
 {% include JB/setup %}
 
