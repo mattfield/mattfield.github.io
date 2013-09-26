@@ -146,10 +146,10 @@ Functor(Maybe, {
 });
 
 fmap(addOne, Maybe(3));
-//=> 4
+//=> Maybe(4)
 
 fmap(addOne, Maybe(null));
-//=> null
+//=> Maybe(null)
 {% endhighlight %}
 
 `Maybe` says that whatever context our function is mapping over might contain a value or it might not. 
